@@ -14,19 +14,19 @@ export default function App () {
 
   const [filter, setFilter] = useState('');
 
-  useEffect(() => {
-    const contactsStorage = localStorage.getItem('contacts' ?? '');
-    const parsedContacts = JSON.parse(contactsStorage);
+  // useEffect(() => {
+  //   const contactsStorage = localStorage.getItem('contacts' ?? '');
+  //   const parsedContacts = JSON.parse(contactsStorage);
     
-    if(parsedContacts) {
-      setContacts(parsedContacts);
-    }
+  //   if(parsedContacts) {
+  //     setContacts(parsedContacts);
+  //   }
     
-  }, []);
+  // }, []);
 
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   localStorage.setItem('contacts', JSON.stringify(contacts));
+  // }, [contacts]);
 
   const addContact = ({name, number}) => {
     const newContact = {
