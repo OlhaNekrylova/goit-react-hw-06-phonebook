@@ -1,11 +1,11 @@
 import {createSlice} from "@reduxjs/toolkit";
 import { nanoid } from "nanoid";
 
-const booksSlice = createSlice({
-    name: "books",
+const contactsSlice = createSlice({
+    name: "contacts",
     initialState: [],
     reducers: {
-        addBook: {
+        addContact: {
             reducer: (state, {payload}) =>  {
                 state.push(payload);
             },
@@ -18,9 +18,9 @@ const booksSlice = createSlice({
                 }
             }
         },
-        deleteBook: (state, {payload}) => state.filter(({id}) => id !== payload),
+        deleteContact: (state, {payload}) => state.filter(({id}) => id !== payload),
     }
 })
 
-export const {addBook, deleteBook} = booksSlice.actions;
-export default booksSlice.reducer;
+export const {addContact, deleteContact} = contactsSlice.actions;
+export default contactsSlice.reducer;
