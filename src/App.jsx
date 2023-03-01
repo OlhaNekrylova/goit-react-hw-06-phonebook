@@ -7,7 +7,7 @@ import UserRoutes from './UserRoutes';
 
 import {store, persistor} from "./redux/store";
 
-import './App.css';
+// import './App.css';
 
 function App() {
     return (

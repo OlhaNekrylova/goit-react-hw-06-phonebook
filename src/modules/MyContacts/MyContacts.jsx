@@ -5,7 +5,7 @@ import ContactList from "../ContactList/ContactList";
 import Filter from "../Filter/Filter";
 
 import { addContact, deleteContact } from "../../redux/contacts/contacts-slice";
-import {setFilter} from "../../redux/contacts/contacts-slice";
+import {setFilter} from "../../redux/filter/filter-slice";
 
 import { getAllContacts, getFilteredContacts } from "../../redux/contacts/contacts.selectors";
 import {getFilter} from "../../redux/filter/filter-selectors";
@@ -60,7 +60,7 @@ const MyContacts = () => {
                 <div className={styles.block}>
                     <h2>Add contact</h2>
                     <ContactForm onSubmit={handleAddContact} />
-                </div>
+                </div> 
                 <div className={styles.block}>
                     <Filter value={filter} handleChange={handleFilter} />
                     {isContacts && <ContactList contacts={filteredContacts} onDeleteContact={handleDeleteContact}  />}
