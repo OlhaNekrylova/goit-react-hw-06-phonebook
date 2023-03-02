@@ -1,10 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import { addContact } from "../../redux/contacts/contacts-slice";
 import { getAllContacts } from "../../redux/contacts/contacts-selectors";
-
 // import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-// import { nanoid } from 'nanoid';
 import css from './ContactForm.module.css';
 
 export default function ContactForm () {
@@ -20,7 +18,7 @@ export default function ContactForm () {
             return (name.toLowerCase() === normalizedName && number.toLowerCase() === normalizedNumber)
         })
 
-        return Boolean(result)
+        return Boolean(result);
     }
 
     const handleAddContact = ({ name, number }) => {
@@ -31,41 +29,6 @@ export default function ContactForm () {
 
         dispatch(addContact({ name, number }));
     }
-
-
-    // const [name, setName] = useState('');
-    // const [number, setNumber] = useState('');
-    
-    // const contactNameId = nanoid();
-    // const contactNumberId = nanoid();
-
-    // const handleChange = e => {
-    //     const { name, value } = e.currentTarget;
-        
-    //     switch (name) {
-    //         case 'name':
-    //             setName(value);
-    //             break;
-
-    //         case 'number':
-    //             setNumber(value);
-    //             break;
-
-    //         default:
-    //             break;
-    //     }
-    // };
-
-    // const handleSubmit = e => {
-    //     e.preventDefault();
-    //     onSubmit({ name: name, number: number });
-    //     reset();
-    // };
-
-    // const reset = () => {
-    //     setName('');
-    //     setNumber('');
-    //     };
     
     return (
             <form className={css.form} onSubmit={handleAddContact}>
