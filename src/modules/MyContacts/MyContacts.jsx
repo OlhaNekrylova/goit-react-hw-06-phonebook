@@ -6,8 +6,6 @@ import styles from "./MyContacts.module.css";
 
 const MyContacts = () => {
 
-    // const isContacts = Boolean(filteredContacts.length);
-
     return (
         <div>
             <h1>Phonebook</h1>
@@ -23,7 +21,6 @@ const MyContacts = () => {
                     // value={filter} handleChange={handleFilter} 
                     />
                     <ContactList />
-
                     {/* {isContacts && <ContactList contacts={filteredContacts} onDeleteContact={handleDeleteContact}  />}
                     {!isContacts && <p className={styles.text}>No contacts in list</p>} */}
                 </div>

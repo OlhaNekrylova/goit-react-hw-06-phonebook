@@ -1,34 +1,52 @@
 import { useSelector, useDispatch } from "react-redux";
 import { addContact } from "../../redux/contacts/contacts-slice";
 import { getAllContacts } from "../../redux/contacts/contacts-selectors";
-// import React, {useState} from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import css from './ContactForm.module.css';
 
-export default function ContactForm () {
-    // const filteredContacts = useSelector(getFilteredContacts);
+const ContactForm = () => {
     const allContacts = useSelector(getAllContacts);
     
     const dispatch = useDispatch();
 
-    const isDublicate = (name, number) => {
-        const normalizedName = name.toLowerCase();
-        const normalizedNumber = number.toLowerCase();
-        const result = allContacts.find(({ name, number }) => {
-            return (name.toLowerCase() === normalizedName && number.toLowerCase() === normalizedNumber)
-        })
+    const handleAddContact = e => {
+        e.preventDefault();
+        const form = e.currentTarget;
+        const name = form.elements.name.value;
+        const number = form.elements.number.value;
 
-        return Boolean(result);
+        const newContact = { name, number };
+
+        const isPresentContact = allContacts.find(element => 
+            element.name.toLowerCase() === newContact.name.toLowerCase()
+        ) ? true: false;
+        
+        if (isPresentContact){
+            alert(`${newContact.name} is already in contacts.`)
+        } else {
+            dispatch(addContact(newContact));
+            form.reset();
+        }        
     }
 
-    const handleAddContact = ({ name, number }) => {
-        if (isDublicate(name, number)) {
-            alert(`${name} and ${number} are already in contacts.`);
-            return false;
-        }
+    // const isDublicate = (name, number) => {
+    //     const normalizedName = name.toLowerCase();
+    //     const normalizedNumber = number.toLowerCase();
+    //     const result = allContacts.find(({ name, number }) => {
+    //         return (name.toLowerCase() === normalizedName && number.toLowerCase() === normalizedNumber)
+    //     })
 
-        dispatch(addContact({ name, number }));
-    }
+    //     return Boolean(result);
+    // }
+
+    // const handleAddContact = ({ name, number }) => {
+    //     if (isDublicate(name, number)) {
+    //         alert(`${name} and ${number} are already in contacts.`);
+    //         return false;
+    //     }
+
+    //     dispatch(addContact({ name, number }));
+    // }
     
     return (
             <form className={css.form} onSubmit={handleAddContact}>
@@ -43,8 +61,7 @@ export default function ContactForm () {
                         // value={name}
                         // onChange={handleChange}
                         required
-                    >
-                    </input>
+                    />
                 </label>
                     
                 <label className={css.label}>
@@ -58,8 +75,7 @@ export default function ContactForm () {
                         // value={number}
                         // onChange={handleChange}
                         required
-                    > 
-                    </input>
+                    />
                 </label>
                     
                 <button className={css.button}  type='submit'>
@@ -69,6 +85,7 @@ export default function ContactForm () {
         );
     };
 
-ContactForm.propTypes = {
-    onSubmit: PropTypes.func.isRequired,
-};
+export default ContactForm;
+// ContactForm.propTypes = {
+//     onSubmit: PropTypes.func.isRequired,
+// };
