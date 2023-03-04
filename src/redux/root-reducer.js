@@ -8,14 +8,14 @@ import filterReducer from "./filter/filter-slice";
 const rootReducer = combineReducers({
     contacts: contactsReducer,
     filter: filterReducer,
-})
+});
 
 const persistConfig = {
     key: 'root',
     storage,
     whitelist: ['contacts']
-}
+};
 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export default persistedReducer;

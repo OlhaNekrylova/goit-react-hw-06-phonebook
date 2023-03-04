@@ -7,8 +7,6 @@ import UserRoutes from './UserRoutes';
 
 import {store, persistor} from "./redux/store";
 
-// import './App.css';
-
 function App() {
     return (
         <Provider store={store}>
@@ -20,6 +18,6 @@ function App() {
             </PersistGate>
         </Provider>
     );
-}
+};
 
 export default App;

@@ -6,7 +6,7 @@ const filterSlice = createSlice({
     reducers: {
         setFilter: (_, {payload}) => payload,
     }
-})
+});
 
 export const {setFilter} = filterSlice.actions;
 

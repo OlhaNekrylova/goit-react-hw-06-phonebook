@@ -1,10 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
 import React from 'react';
-// import PropTypes from 'prop-types';
+
 import {setFilter} from "../../redux/filter/filter-slice";
 import {getFilter} from "../../redux/filter/filter-selectors";
 
-import css from './Filter.module.css';
+import styles from './Filter.module.css';
 
 const Filter = () => {
     const filter = useSelector(getFilter);
@@ -16,13 +16,11 @@ const Filter = () => {
     };
 
     return (
-        <label className={css.filterLabel}>
+        <label className={styles.filterLabel}>
             Find contacts by name
             <input
-                className={css.filterInput}
+                className={styles.filterInput}
                 type="text"
-                // value={value}
-                // onChange={onChange}
                 value={filter}
                 onChange={handleFilter}
                 required
@@ -30,10 +28,5 @@ const Filter = () => {
         </label>
     ); 
 };
-
-// Filter.propTypes = {
-//     value: PropTypes.string.isRequired,
-//     onChange: PropTypes.func.isRequired,
-// };
 
 export default Filter;
